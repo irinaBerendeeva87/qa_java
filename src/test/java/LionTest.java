@@ -3,43 +3,19 @@ import com.example.Lion;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
 import org.mockito.Mockito;
+import org.mockito.junit.MockitoJUnitRunner;
+
 import java.util.List;
 
-@RunWith(Parameterized.class)
+import static org.junit.Assert.assertThrows;
+
+@RunWith(MockitoJUnitRunner.class)
 public class LionTest {
-    private final String sex;
-    private final boolean hasMane;
-    private final int kittensCount;
+    String sex;
+    int kittensCount;
 
     private final Feline feline = Mockito.mock(Feline.class);
-
-    public LionTest(String sex, boolean hasMane, int kittensCount) {
-        this.sex = sex;
-        this.hasMane = hasMane;
-        this.kittensCount = kittensCount;
-    }
-
-    @Parameterized.Parameters
-    public static Object[][] getLionTest() {
-        return new Object[][]{
-                {"Cамец", true, 1},
-                {"Cамка", false, 1},
-                {"Носорог", false, 0}
-        };
-    }
-
-    @Test
-    public void getHasMane() {
-        try {
-            Lion lion = new Lion(sex, feline);
-            Assert.assertEquals(hasMane, lion.doesHaveMane());
-        } catch (Exception exception) {
-            Assert.assertEquals("Используйте допустимые значения пола животного - самец или самка",
-                    exception.getMessage());
-        }
-    }
 
     @Test
     public void getFoodReturnValidFoodOfLion() {
@@ -75,5 +51,18 @@ public class LionTest {
         boolean expectedhasMane = true;
         boolean actualhasMane = lion.doesHaveMane();
         Assert.assertEquals("Lion has mane", expectedhasMane, actualhasMane);
+    }
+
+    @Test(expected = Exception.class)
+    public void constructorThrowsExceptionOnUnsupportedSex() throws Exception {
+        Lion lion = new Lion("Носорог", feline);
+        lion. doesHaveMane();
+    }
+
+    @Test
+    public void shouldBeException() {
+        Feline feline = new Feline();
+        Throwable exception = assertThrows(Exception.class, () -> new Lion("dsdds", feline));
+        Assert.assertEquals("Используйте допустимые значения пола животного - самец или самка", exception.getMessage());
     }
 }
