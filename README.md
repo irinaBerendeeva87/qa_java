@@ -1,4 +1,6 @@
-🚀 **Unit tests** 🚀
+🚀 **Unit tests ZOO Program** 🚀
+
+Application for zoologists: they are exploring the feline family. To record observations, scientists use a special program.
 
 As part of the training, I wrote unit tests with using the Jacoco, Mockito и JUnit4.
 The project uses Java 11 and used the Maven build system. And the Jacoco report was generated.
