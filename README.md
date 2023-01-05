@@ -5,6 +5,7 @@ The project uses Java 11 and used the Maven build system. And the Jacoco report 
 In this project I used DI and wrote mocks with Mockito. 
  
 📝 **Task** 📝
+
 The Lion class shouldn't depend on the Feline class. Use the DI. 
 Cover the Feline, Cat and Lion classes with tests. Use mock and parameterization where needed.
 Generate Jacoco report with not less 70% coverage.
