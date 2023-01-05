@@ -9,7 +9,7 @@ The Lion class shouldn't depend on the Feline class. Use the DI.
 Cover the Feline, Cat and Lion classes with tests. Use mock and parameterization where needed.
 Generate Jacoco report with not less 70% coverage.
 
-🔖**Instructions how to run:**🔖
+🔖** Instructions how to run **🔖
 
 1. Clone this repo and clone your version of the report. 
 2. Run AllTest.java
